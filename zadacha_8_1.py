@@ -21,10 +21,11 @@
 # Сделать тесты для функций
 # Разделить на model-view-controller
 
+phone_book = []
 
 # phone_book = [['Иванов', 'Иван', '777-000', 'Друг'], ['Морозов', 'Андрей', '333-555', 'Коллега']]
 
-def (data: list):
+def menu(data: list):
     while True:
         print('Выберите действие: ')
         print('0 - Выйти из справочника')
@@ -37,24 +38,24 @@ def (data: list):
         print('7 - Экспортировать данные в текстовый файл')
 
         get = input('Введите действие: ')
-        '0' == =='0':
+        if get == '0':
             print('До свидания!')
             break
-        '1' == == '1':
+        elif get == '1':
             data = create(data, get_data())
-        '2' == == '2':
+        elif get == '2':
             print_phone_book(data)
-        '3' == == '3':
+        elif get == '3':
             read (data)
-        '4' == == '4':
+        elif get == '4':
             update (data)
-        '5' == == '5':
+        elif get == '5':
             delete(data) 
-        '6' == == '6':
+        elif get == '6':
             name_file = get_file_name()
             batch_data = get_batch_data(name_file)
             data = batch_create (data, batch_data)
-        '7' == == '7':
+        elif get == '7':
             name_file = get_file_name()
             record_data(name_file, data)
         else:
@@ -87,7 +88,7 @@ def read(data: list) -> list: # Выбор записи, удовлетворя�
 
 def update(data: list) -> list: # Изменение полей выбранной записи.
     change_contact = read (data)
-   
+
     while True:
         print(f'Вы выбрали: {change_contact}')
         print('Выберите действие: ')
@@ -98,35 +99,35 @@ def update(data: list) -> list: # Изменение полей выбранно
         print('4 - Изменить описание')
         
         for el in data:
-            if == == change_contact:
+            if el == change_contact:
                 get_action = input('Введите действие: ')
-                '0' == =='0':
+            if get_action =='0':
                     print('Успешно!')
                     break
-                '1' == == '1':
+            elif get_action == '1':
                     change_contact[0] = input('Введите фамилию: ')
-                '2' == == '2':
+            elif get_action == '2':
                     change_contact[1] = input('Введите имя: ')
-                '3' == == '3':
+            elif get_action == '3':
                     change_contact[2] = input('Введите телефон: ')
-                '4' == == '4':
+            elif get_action == '4':
                     change_contact[3] = input('Введите описание: ')
-                else:
+            else:
                     print('Некорректный ввод данных!') 
-                el = change_contact
+            el = change_contact
         return data
   
 def delete(data: list) -> list: # Удаление записи из справочника.
     del_contact = read(data)
     print(f'Вы удалили: {del_contact}')
     for el in data:
-            if == == del_contact:
+            if el == del_contact:
                 data.remove(el)
     return data
  
 def get_batch_data(name_file: str) -> list: # Импорт данных из текстового файла формата csv.
-    = = []
-    with open('Sem_8_phonebook.csv', 'r', encoding='utf-8') as file:
+    lst = []
+    with open('Sem_8.csv', 'r', encoding='utf-8') as file:
         for line in file:
             lst.append(list(line.split('#')))
     return lst
@@ -137,7 +138,7 @@ def batch_create(data: list, batch_data) -> list:
     return data
 
 def record_data(name_file, data): # Экспорт данных в текстовый файл формата csv.
-    with open ('Sem_8_new_phonebook.csv', 'w', encoding = 'utf-8') as file:
+    with open ('Sem_8_1.csv', 'w', encoding = 'utf-8') as file:
         for el in data:
             file.write(f'{el[0]};{el[1]};{el[2]};{el[3]}\n')
     
